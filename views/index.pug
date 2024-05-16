@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #[em Coding Notes], a Quick Reference resource for coding information for Full-Stack Development using HTML, CSS, and JavaScript
+
+  h1 Dynamic content 
+
+  p The website has the following record counts: 
+
+  ul 
+    //- Count References defined in noteController.js
+    li #[strong Notes:] !{note_count}
+    li #[strong Authors:] !{author_count}
+    li #[strong Languages:] !{language_count}
+    li #[strong Components:] !{component_count}

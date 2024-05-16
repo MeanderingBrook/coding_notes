@@ -1,0 +1,31 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(method='POST')
+    div.form-group
+      label(for='first_name') First Name:
+      input#first_name.form-control(type='text', placeholder='First Name (Christian)' name='first_name' required value=(undefined===author ? '' : author.first_name))
+      
+      br
+      
+      label(for='family_name') Family Name:
+      input#family_name.form-control(type='text', placeholder='Family Name (Surname)' name='family_name' required value=(undefined===author ? '' : author.family_name))
+    
+    br
+    
+    div.form-group
+      label(for='date_joined') Date Joined:
+      input#date_joined.form-control(type='date', placeholder='Date Joined', name='date_joined' required value=(undefined===author ? '' : author.date_joined))
+
+      //- Line Break is required ONLY for Author Form to space Submit button; reason unknown
+      br 
+
+      button.btn.btn-primary(type='submit') Submit
+
+  if errors 
+    ul 
+      for error in errors 
+        li!= error.msg
+

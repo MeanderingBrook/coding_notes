@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+  h1= title 
+  if note_list.length 
+    ul 
+      each note in note_list 
+        li 
+          a(href=note.url) #{note.title}
+          //- If Author Name were on the previous line it would be part of the hyperlink
+          |  (#{note.author.name}) #{note.date_created_formatted}
+
+  else 
+    p There are no Notes.

@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+
+  h1 #{title}: #{note.name}
+  p= note.date_created_formatted
+
+  p Do you wish to Delete this Note? This action cannot be undone.
+
+  form(method='POST')
+    div.form-group 
+      input#noteid.form-control(type='hidden', name='noteid', value=note._id)
+
+    button.btn.btn-primary(type='submit') Delete

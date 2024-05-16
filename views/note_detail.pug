@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Title: #{note.title}
+
+
+  p #[strong Author: ]
+    a(href=note.author.url) #{note.author.name}
+  p #[strong Text: ] #{note.text}
+  p #[strong Language: ] #{note.language}
+  p #[strong Component: ]
+    each val, index in note.component
+      a(href=val.url) #{val.name}
+      if index < note.component.length - 1
+        |,&nbsp;
+
+  hr
+  p 
+    a(href=note.url+'/delete') Delete Note
+  p 
+    a(href=note.url+'update') Update Note

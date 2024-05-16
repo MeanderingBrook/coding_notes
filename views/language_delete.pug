@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+
+  h1 #{title}: #{language.name}
+  p= language.description
+
+  p Do you wish to Delete this Language? This action cannot be undone.
+
+  form(method='POST')
+    div.form-group
+      input#languageid.form-control(type='hidden', name='languageid', value=language._id)
+    
+    button.btn.btn-primary(type='submit') Delete

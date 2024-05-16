@@ -1,0 +1,30 @@
+extends layout 
+
+block content 
+  
+  h1 Component: #{component.name} 
+
+  br
+
+  p #[strong Description:] #{component.description}
+
+  br
+
+  div(style='margin-left:20px;margin-top:20px')
+  
+    h4 Associated Notes 
+    if component_notes.length
+      dl 
+        each note in component_notes
+          dt 
+            a(href=note.url) #{note.title}
+          dd #{note.text}
+
+    else 
+      This Component has no Notes.
+  
+  hr
+  p 
+    a(href=component.url+'/delete') Delete Component
+  p 
+    a(href=component.url+'/update') Update Component

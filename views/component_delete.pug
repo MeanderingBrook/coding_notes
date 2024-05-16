@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+
+  h1 #{title}: #{component.name}
+  p= component.description 
+
+  if component_notes.length
+
+    p #[strong Delete the following Notes before attempting to delete this Component.]
+      div(style='margin-left:20px;margin-top:20px')
+      h4 Components 
+      dl 
+        each note in component_notes
+          dt 
+            a(href=note.url) #{note.title}
+          dd #{note.summary}
+
+  else 
+    p Do you wish to Delete this Component? This action cannot be undone.
+
+    form(method='POST')
+      div.form-group
+        input#componentid.form-control(type='hidden', name=componentid, value=component._id)
+      
+      button.btn.btn-primary(type='submit') Delete

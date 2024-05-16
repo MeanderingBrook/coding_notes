@@ -1,0 +1,27 @@
+extends layout 
+
+block content 
+  h1 Language: #{language.name}
+
+  br
+
+  p #[strong Description:] #{language.description}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Languages 
+    if language_notes.length 
+      dl 
+        each note in language_notes 
+          dt 
+            a(href=note.url) #{note.title}
+          dd #{note.text}
+    
+    else 
+      p This Language has no Notes.
+
+  hr
+  p
+    a(href=language.url+'/delete') Delete Language
+  p 
+    a(href=language.url+'/update') Update Language

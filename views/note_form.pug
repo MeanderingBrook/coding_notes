@@ -1,0 +1,58 @@
+extends layout 
+
+block content 
+  h1= title 
+
+  form(method='POST')
+    div.form-group
+      label(for='title') Title:
+      input#title.form-control(type='text', placeholder='Name of Note' name='title' required value=(undefined===note ? '' : note.title))
+    
+    div.form-group
+      label(for='author') Author: 
+      select#author.form-control(name='author' required)
+        option(value='') -- Please select an Author --
+        for author in authors
+          if note 
+            if author._id.toString()===note.author._id.toString()
+              option(value=author._id selected) #{author.name}
+            else 
+              option(value=author._id) #{author.name}
+          else 
+            option(value=author._id) #{author.name}
+
+    div.form-group
+      label(for='summary') Summary: 
+      textarea#summary.form-control(placeholder='Note Summary' name='summary' required)= undefined===note ? '' : note.summary
+    
+    div.form-group
+      label(for='text') Text: 
+      textarea#text.form-control(placeholder='Note Text' name='text' rows="10" required)= undefined===note ? '' : note.text
+
+    div.form-group
+      label Language:
+      div
+        for language in languages
+          div(style='display: inline; padding-right:10px;')
+            if language.checked
+              input.checkbox-input(type='checkbox', name='language', id=language._id, value=language._id, checked)
+            else 
+              input.checkbox-inbox(type='checkbox', name='language', id=language._id, value=language._id)
+            label(for=language._id) &nbsp;#{language.name}
+
+    div.form-group
+      label Component:
+      div
+        for component in components
+          div(style='display: inline; padding-right:10px;')
+            if component.checked
+              input.checkbox-input(type='checkbox', name='component', id=component._id, value=component._id, checked)
+            else 
+              input.checkbox-inbox(type='checkbox', name='component', id=component._id, value=component._id)
+            label(for=component._id) &nbsp;#{component.name}
+
+    div.form-group
+      label(for='date_created') Date Created:
+      input#date_created.form-control(type='date', placeholder='Date Created', name='date_created' required value=(undefined===note ? '' : note.date_created))
+
+    button.btn.btn-primary(type='submit') Submit

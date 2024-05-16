@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+
+  h1 Author: #{author.name}
+  p #[strong Date Joined:] #{author.date_joined_formatted}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Notes 
+    if author_notes.length
+      dl 
+        each note in author_notes 
+          dt 
+            a(href=note.url) #{note.title}
+          dd #{note.summary}
+    else 
+      p This Author has no Notes.
+
+  hr
+  p 
+    a(href=author.url+'/delete') Delete Author
+  p
+    a(href=author.url+'/update') Update Author
