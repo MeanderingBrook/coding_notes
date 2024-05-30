@@ -1,3 +1,8 @@
+// Start Server and Run Website by...
+// Terminal to Folder, coding-notes
+// npm run devstart
+// Open in Browser, http://localhost:3000/
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');

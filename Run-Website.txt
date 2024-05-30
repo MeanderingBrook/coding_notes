@@ -1,0 +1,4 @@
+Start Server and Run Website by...
+Terminal to Folder, coding-notes
+npm run devstart
+Open in Browser, http://localhost:3000/
